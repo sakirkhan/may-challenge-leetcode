@@ -1,0 +1,29 @@
+class Solution {
+public:
+    int firstBadVersion(int n) {
+       long  int i=1,mid,l,r;
+        while(i<=n)
+        {
+         if(isBadVersion(i))
+         {
+             break;
+         }
+            i=i*2;
+        }
+        
+        
+        l=i/2;r=i;
+        
+        while(l<=r)
+        {
+            mid=l+(r-l)/2;
+            if(!isBadVersion(mid) && isBadVersion(mid+1) && mid<=r)
+                break;
+            if(isBadVersion(mid))
+                r=mid;
+            else
+                l=mid+1;
+        }
+        return mid+1;
+    }
+};

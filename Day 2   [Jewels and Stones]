@@ -1,0 +1,22 @@
+class Solution {
+public:
+    int numJewelsInStones(string J, string S) {
+        map<char,int>mp;
+        
+        int lenJ=J.length();
+        int lenS=S.length();
+        
+        if(lenS==0 || lenJ==0)
+            return 0;
+        
+        for(auto s : S)
+            mp[s]++;
+        int cnt=0;
+        for(auto j : J)
+        {
+            if(mp[j])
+                cnt+=mp[j];
+        }
+        return cnt;
+    }
+};

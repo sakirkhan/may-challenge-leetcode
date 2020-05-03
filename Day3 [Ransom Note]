@@ -1,0 +1,28 @@
+class Solution {
+public:
+    bool canConstruct(string ransomNote, string magazine) {
+       int len1=ransomNote.length(),len2=magazine.length();
+        
+        if(len1==0 )
+            return true;
+        
+        if(len2==0)
+            return false;
+        
+        map<char,int>mp1,mp2;
+        
+        for(auto s : ransomNote)
+            mp1[s]++;
+        
+        for(auto s : magazine)
+            mp2[s]++;
+        
+        for(auto key1 : mp1)
+        {
+            if(!mp2[key1.first] || mp2[key1.first] < key1.second)
+                return false;
+        }
+        
+        return true;
+    }
+};
